@@ -1,0 +1,513 @@
+@font-face {
+    font-family: Jaro;
+    src: url(/fonts/Jaro/Jaro-Regular-VariableFont_opsz.ttf);
+}
+*{
+    margin:0;
+    padding:0;
+}
+img { /*makes pixel art img (all imgs) be crisp*/
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+footer{
+    display: flex;
+    color: white;
+    font-family: Jaro;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+#msg{
+    font-family: Jaro;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: rgb(241, 45, 45) 3px solid;
+    color: white;
+    background-color: rgb(240, 92, 117);
+}
+header{
+    background-color: #FDC500;
+    width: 100%;
+    height: 50px;
+    display:flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#logo{
+    width: 40px;
+    height:auto;
+}
+#title,#logout{
+    font-family: Jaro;
+    font-size: 35px;
+    text-shadow: -3px 2px 0px rgba(255, 255, 255, 0.657);
+}
+#tile:hover, #logo:hover{
+    cursor:pointer;
+    color:#FFD500;
+    transition: background-color 0.3s ease;
+
+
+}
+#first,#second{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-right:6vw;
+}
+#first{
+    padding-left: 6vw;
+}
+footer{
+    background-color: #03071E;
+    width:100%;
+    height:500px;
+}
+/*login*/
+#loginPage, #regPage{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items:normal;
+}
+#about{
+    padding-top: 75px;
+    padding-bottom: 100px;
+    width: 40vw;
+}
+#about h1{
+    font-family: Jaro;
+}
+#about p{
+    margin-top: 10px;
+    font-family: sans-serif;
+}
+#loginSection, #regSection{
+    background-color: #FFD500;
+    margin-right: 12vw;
+    width: 275px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-left: 5vw;
+}
+#loginSection h1, #regSection h1{
+    font-family: Jaro;
+    color: white;
+    font-weight: 500;
+    font-size: 36px;
+    margin-bottom: 20px;
+    
+}
+#username,#password{
+    font-family: Jaro;
+    font-size: 18px;
+    color: #3D0066;
+}
+.box{
+    border: solid 2px #3D0066;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    width: 200px;
+    height: 20px;
+    font-size: 15px;
+    padding: 5px;
+}
+#noAccount{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#noAccount h5, #noAccount a{
+    font-family: sans-serif;
+}
+#noAccount h5{
+    margin-bottom: 5px;
+}
+#loginForm, #regForm{
+    display:flex;
+    flex-direction: column;
+}
+#logButton, #allTransButton, #addButton, #addEntryButton, #backButton, #save, #delete, #cancel, .button-link{
+    font-family: Jaro;
+    background-color: #3D0066;
+    color: white;
+    border-radius: 2px;
+    width: 100px !important;
+    height: 50px;
+    font-size: 18px;
+    align-self: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+#logButton:hover, #allTransButton:hover, #addButton:hover, #addEntryButton:hover, #backButton:hover, #save:hover, #delete:hover, #cancel:hover{
+    background-color: #5C0099;
+    transition: background-color 0.3s ease;
+}
+#logout a:link, #logout a:visited{
+    color:black;
+    font-size: 20px;
+}
+#logout a:hover{
+    background-color: #fee368;
+    width:fit-content;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+#second{
+    padding-bottom: 13px;
+}
+
+/*Register*/
+#regImage{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:space-around;
+    width:300px;
+}
+#regImage img{
+    width:30vw;
+    height:auto;
+}
+#regSection{
+    padding-bottom: 40px;
+    margin-left: 8vw;
+}
+/*Dashboard*/
+#dashboard{
+    margin-left: 15vw;
+    margin-right: 15vw;
+    display: flex;
+    flex-direction: column;
+
+}
+#welcome{
+    font-family: Jaro;
+    font-weight: 500;
+    font-size: 3em;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+#graphic{
+    width: 60vw;
+    height: 500px;
+    align-self: center;
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+}
+
+#allTransButton, #allA{
+    margin-top: 20px;
+    align-self: center;
+}
+#dashboard p{
+    font-family: Jaro;
+    font-size: 20px;
+    font-weight: 500;
+    margin: 10px;
+    align-self: center;
+
+}
+#legend{
+    background-color: #FDC500;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    align-self: center;
+    
+}
+/* Transactions */
+#transactions {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+}
+
+#stuff {
+    display: flex;
+    flex-direction: row;
+}
+
+#transactions h1 {
+    font-family: Jaro;
+    font-size: 3em;
+    margin-bottom: 10px;
+    margin-top: 30px;
+    font-weight: 500;
+}
+
+#transactions p {
+    font-family: sans-serif;
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+
+#transTable {
+    width: 100%;
+    background-color: #FDC500;
+    border-collapse: separate;
+    border-spacing: 0 5px;
+    align-self: center;
+    margin-bottom: 15px;
+}
+
+#col {
+    width: 25vw;
+    height: 100;
+}
+
+#transTable tr td {
+    text-align: center;
+    background-color: #FFD500;
+    font-family: Jaro;
+    padding: 0;
+    height: 50px;
+}
+
+
+#transTable tr th {
+    background-color: #03071E;
+    color: white;
+    font-family: Jaro;
+    font-size: 28px;
+    font-weight: 500;
+    padding: 10px;
+    width: 1000px;
+}
+
+#transTable tr {
+    border-spacing: 0;
+}
+
+.expense{
+    font-family: sans-serif !important;
+    font-size: 50px !important;
+    font-weight: bolder !important;
+    text-align: center;
+    color: red !important; 
+}
+
+.income{
+    font-size: 50px !important;
+    font-weight: bolder !important;
+    color: green !important;
+    font-family: sans-serif !important;
+}
+
+#genre {
+    border: 0;
+    padding-bottom: 10px;
+    -webkit-user-select: none;
+    -moz-user-select: none; 
+    -ms-user-select: none;     
+    user-select: none !important;  
+}
+
+#genre:focus {
+    border: none;
+}
+
+
+.tableBox, .textareaBox {
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    text-align: center;
+    outline: none;
+    padding: 5px;
+    background-color: #FFD500;
+    border: none;
+    color: black;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    box-shadow: none;
+    font-family: Jaro;
+}
+
+.textareaBox {
+    padding-top: 30px;
+    resize: none;
+}
+
+.tableBox:hover {
+    background-color: #fee368;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#addEntryButton {
+    display: none;
+}
+
+#addTable * {
+    padding: 0;
+}
+
+#calendar {
+    font-size: 12px;
+}
+#addRow {
+    display: table-row; 
+}
+#addTable, #backButton{
+    display: none;
+}
+/*Edit Transaction*/
+
+#inter{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#edit h1{
+    font-family: Jaro;
+    font-weight: 500;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+#initial, #new{
+    background-color:#FDC500;
+    border-radius: 10px;
+    width: 270px;
+    height: 570px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+}
+.oldGenre, .newGenre{
+    margin-top: 15px;
+    width: 50px !important;
+    height: 50px !important;
+}
+.oldBox, .newBox{
+    align-self: center;
+    background-color: #FFD500;
+    border-radius: 5px;
+    width: 210px;
+    height: 30px;
+    font-family: Jaro;
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+
+}
+.oldGenre, .newGenre{
+    font-family: sans-serif !important;
+    margin-top: 15px;
+    width: 50px !important;
+    height: 50px !important;
+    font-size: 60px !important;
+}
+.oldDesc, .newDesc{
+    height:100px;
+    align-items: first baseline;
+}
+.oldlabel, .newlabel{
+    margin-left: 2vw;
+    font-family: Jaro;
+    color:#3D0066;
+    font-size: 18px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+#arrow{
+    height:50px;
+    align-self: center;
+    margin-left:50px;
+    margin-right:50px;
+}
+#edit{
+    display:flex;
+    flex-direction: column;
+    
+}
+#alignthis{
+    align-self: center;
+}
+#save, #delete, #cancel{
+    height: 50px !important;
+}
+
+.newFormGenre{
+    width:50px !important;
+    height:50px !important;
+    border-radius: 5px;
+    font-family: sans-serif !important;
+}
+.newForm{
+    width: 220px;
+    height: 20px;
+    border-radius: 5px;
+    font-family: Jaro;
+    font-size: 20px;
+    color:white;
+    background-color: #5C0099;
+
+}
+.newForm:hover{
+    background-color: #7f2ab7;
+    transition: background-color 0.3s ease;
+}
+.newFormDesc{
+    height: 100px;
+    width: 240px;
+    resize: none;
+}
+.newlabel{
+    color:#FDC500;
+}
+
+#new{
+    background-color: #3D0066;
+}
+
+#dashBack:link, #dashBack, #dashBack:visited{
+    color: rgb(0, 0, 0);
+    background-color: #7f2ab7;
+    padding: 5px;
+    margin-top: 20px;
+    width: 40px;
+    font-family: Jaro;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.button-link {
+    display: flex;
+    background-color: #FFD500; /* Adjust to your button color */
+    color: #03071E; /* Adjust to your text color */
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+    margin-left: 45px;
+}
+
+
+/*footer*/
