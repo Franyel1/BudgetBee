@@ -1,12 +1,8 @@
 The content below is an example project proposal / requirements document. Replace the text below the lines marked "__TODO__" with details specific to your project. Remove the "TODO" lines.
 
-(__TODO__: your project name)
-
 # BudgetBee
 
 ## Overview
-
-(__TODO__: a brief one or two paragraph, high-level description of your project)
 
 BudgetBee is a web application that enables users to track and manage their finances in a simple, intuitive way. With BudgetBee, users can log income, record expenses across multiple categories, and view a summary of their spending habits. 
 
@@ -15,14 +11,10 @@ This application is designed to give users a clearer view of their financial hea
 
 ## Data Model
 
-(__TODO__: a description of your application's data and their relationships to each other) 
-
 The application will store Users, Transactions, and Categories
 
 * Users can add multiple transactions.
 * Each transaction will belong to a specific category (e.g., "Food," "Transportation") to provide meaningful summaries and insights.
-
-(__TODO__: sample documents)
 
 An Example User:
 
@@ -53,11 +45,9 @@ An Example Transaction:
 
 ## [Link to Commented First Draft Schema](db.mjs) 
 
-(__TODO__: create a first draft of your Schemas in db.mjs and link to it)
 
 ## Wireframes
 
-(__TODO__: wireframes for all of the pages on your site; they can be as simple as photos of drawings or you can use a tool like Balsamiq, Omnigraffle, etc.)
 
 /login - page to log in
 
@@ -85,7 +75,6 @@ An Example Transaction:
 
 ## Site map
 
-(__TODO__: draw out a site map that shows how pages are related to each other)
 
 Here's a [complex example from wikipedia](https://upload.wikimedia.org/wikipedia/commons/2/20/Sitemap_google.jpg), but you can create one without the screenshots, drop shadows, etc. ... just names of pages and where they flow to.
 
@@ -93,7 +82,6 @@ Here's a [complex example from wikipedia](https://upload.wikimedia.org/wikipedia
 
 ## User Stories or Use Cases
 
-(__TODO__: write out how your application will be used through [user stories](http://en.wikipedia.org/wiki/User_story#Format) and / or [use cases](https://en.wikipedia.org/wiki/Use_case))
 
 1. As a new user, I can register an account with BudgetBee.
 2. As a user, I can log in to the site.
