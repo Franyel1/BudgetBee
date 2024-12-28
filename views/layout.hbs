@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <title>BudgetBee</title>
+</head>
+<body>
+    <header>
+        <div id="first">
+            <img id="logo" src="../images/budgetBee.png">
+            <div id="title">BudgetBee</div>
+        </div>
+        <div id="second">
+            {{#if user}}
+                <div id="logout"><a href="/logout">Log Out</a></div>
+            {{/if}}
+        </div>
+    </header>
+
+    <div id ="stuff">
+        {{{body}}}
+    </div>
+
+    <footer>
+         <h3>Credits</h3>
+        <p>Icon and logo made by me</p>
+        <p>Register picture by DALL-E 2</p>
+    </footer>
+<script src="https://cdn.jsdelivr.net/npm/motion@11.11.13/dist/motion.js"></script>
+<script>
+    const { animate } = Motion;
+
+document.addEventListener("DOMContentLoaded", () => {
+    const stuff = document.getElementById("stuff");
+
+    animate(stuff, { opacity: [0.5, 1], y: [-10, 0] }, { duration: 1 });
+
+    const links = document.querySelectorAll("a");
+
+    links.forEach(link => {
+        link.addEventListener("click", event => {
+            const href = link.getAttribute("href");
+
+            if (!href || href.startsWith("http")) return;
+
+            event.preventDefault();
+  
+            animate(stuff, { opacity: [1, 0], y: [0, -50] }, { duration: 0.5 });
+            
+            setTimeout(() => {
+                window.location.href = href;
+            }, 500);
+
+        });
+    });
+});
+
+</script>
+</body>
+</html>

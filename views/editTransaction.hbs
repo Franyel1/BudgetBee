@@ -1,0 +1,78 @@
+<div id="col"></div>
+<div id="edit">
+    <h1>Edit Transaction</h1>
+    <div id="inter">
+        <div id="initial">
+            <div class="oldBox oldGenre {{#if (eq transaction.type "expense")}}expense{{else}}income{{/if}}">
+                {{#if (eq transaction.type "expense")}}−{{else}}+{{/if}}
+            </div>
+            <span class="oldlabel">Name</span>
+            <div class="oldBox">{{transaction.name}}</div>
+            <span class="oldlabel">Type</span>
+            <div class="oldBox">{{transaction.category}}</div>
+            <span class="oldlabel">Amount</span>
+            <div class="oldBox">${{transaction.amount}}</div>
+            <span class="oldlabel">Date</span>
+            <div class="oldBox">{{formatDate2 transaction.date}}</div>
+            <span class="oldlabel">Description</span>
+            <div class="oldBox oldDesc">{{transaction.description}}</div>
+        </div>
+
+
+        <img id="arrow"src="../images/Arrow1.png">
+
+        <!-- Form to edit transaction -->
+        <form method="POST" action="/editTransaction/{{transaction.slug}}">
+            <div id="new">
+                <div class="newBox newGenre">
+                    <input
+                        class="tableBox newForm newFormGenre {{#if (eq transaction.type "expense")}}expense{{else}}income{{/if}}"
+                        type="text"
+                        id="typeToggle"
+                        value="{{#if (eq transaction.type "expense")}}−{{else}}+{{/if}}"
+                        readonly
+                        onclick="toggleType()"
+                        style="cursor: pointer; text-align: center;"
+                    >
+                    <input type="hidden" id="genreHidden" name="type" value=""> 
+                </div>
+                
+                <span class="newlabel">Name</span>
+                <div class="newBox">
+                    <input class="tableBox newForm" type="text" name="name" value="{{transaction.name}}" required>
+                </div>
+                
+                <span class="newlabel">Category</span>
+                <div class="newBox">
+                    <input class="tableBox newForm" type="text" name="category" value="{{transaction.category}}" required>
+                </div>
+                
+                <span class="newlabel">Amount</span>
+                <div class="newBox">
+                    <input class="tableBox newForm"type="number" step="0.01" name="amount" value="{{transaction.amount}}" required>
+                </div>
+                
+                <span class="newlabel">Date</span>
+                <div class="newBox">
+                    <input class="tableBox newForm" type="date" name="date" value="{{formatDate2 transaction.date}}" required>
+                </div>
+                
+                <span class="newlabel">Description</span>
+                <div class="newBox newDesc">
+                    <textarea class="tableBox newForm newFormDesc" name="description">{{transaction.description}}</textarea>
+                </div>
+            </div>
+
+
+    </div>
+    <div id="alignthis">
+        <button id="save" type="submit">Save Changes</button>
+        <button type="button" id="delete" onclick="deleteTransaction('{{transaction.slug}}')">Delete Transaction</button>
+        <a href="/transactions" id="cancel" class="button-link">Cancel</a>
+    </div>
+     </form>
+</div>
+
+<div id="col"></div>
+
+<script src="../javascript/customEdit.js"></script>

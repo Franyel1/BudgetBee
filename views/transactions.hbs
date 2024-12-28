@@ -1,0 +1,55 @@
+<div id="col"></div>
+<div id="transactions">
+    <a id = "dashBack" href="dashboard">Back</a>
+    <h1>Transactions</h1>
+    <p>Click on any transaction to edit it!</p>
+    <table id="transTable">
+        <thead>
+            <tr>
+                <th id="inv"></th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each transactions}}
+            <tr class="row" onclick="window.location.href='/editTransaction/{{_id}}'">
+                <td class="{{#if (eq type "expense")}}expense{{else}}income{{/if}}">
+                    {{#if (eq type "expense")}}−{{else}}+{{/if}}
+                </td>
+                <td>{{name}}</td>
+                <td>{{category}}</td>
+                <td>${{amount}}</td>
+                <td>{{formatDate date}}</td>
+                <td>{{description}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+
+        <form id="transForm" method="POST" action="/transactions">
+            <tbody id="addTable">
+                <tr id="addRow">
+                    <td id="tdGenre" class="expense">
+                        <input class="tableBox expense" id="genre" type="text" value="−" readonly>
+                        <input type="hidden" id="genreHidden" name="type" value="−">
+                    </td>
+                    <td class="p"><input class="tableBox" type="text" name="name" required placeholder="---" maxlength="15"></td>
+                    <td class="p"><input class="tableBox" type="text" name="category" required placeholder="---" maxlength="15"></td>
+                    <td class="p"><input class="tableBox" type="number" name="amount" step="0.01" min="0" required placeholder="---" maxlength="5"></td>
+                    <td class="p"><input class="tableBox" id="calendar" type="date" name="date" required></td>
+                    <td class="p"><textarea class="tableBox textareaBox p" name="description" placeholder="---" maxlength="50"></textarea></td>
+                </tr>
+            </tbody>
+    </table>
+        <button id="addEntryButton" type="submit">Add Entry</button>
+    </form>
+    <button id="addButton">Add</button>
+    <button id="backButton">Back</button>
+</div>
+<div id="col"></div>
+
+
+<script src="../javascript/custom.js"></script>

@@ -1,0 +1,161 @@
+<div id="col"></div>
+<div id="dashboard">
+    <h1 id="welcome">
+        Welcome {{username}}
+    </h1>
+    
+    {{#if (and (eq income 0) (eq expense 0))}}
+
+        <p id="welcome">No transactions yet. Start adding incomes and expenses!</p>
+    {{else}}
+        <div id="graphic">
+            <canvas id="donutChart"></canvas>
+        </div>  
+        
+        <div id="legend">
+            <p>Total Income:&nbsp;&nbsp;$<span id="incomeValue">{{income}}&nbsp;&nbsp;({{incomePercent}}%)</span></p>
+            <p>Total Expense:&nbsp;&nbsp;$<span id="expenseValue">{{expense}}&nbsp;&nbsp;({{expensePercent}}%)</span></p>
+        </div>
+    {{/if}}
+    
+    <a id="allA" href="transactions"><button id="allTransButton">All Transactions</button></a>
+</div>
+<div id="col"></div>
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script type="module">
+
+document.addEventListener('DOMContentLoaded', function () {
+    const income = parseFloat(document.getElementById('incomeValue').innerText) || 0;
+    const expense = parseFloat(document.getElementById('expenseValue').innerText) || 0;
+
+    const incomeBreakdown = JSON.parse('{{{incomeBreakdown}}}');
+    const expenseBreakdown = JSON.parse('{{{expenseBreakdown}}}');
+    const initialLabels = ['Income', 'Expense'];
+    const initialData = [income, expense];
+    const initialColors = ['darkgreen', 'darkred'];
+
+    const chartData = {
+        labels: initialLabels,
+        datasets: [{
+            data: initialData,
+            backgroundColor: initialColors,
+            hoverOffset: 4
+        }]
+    };
+
+    const donutChart = new Chart(document.getElementById('donutChart'), {
+        type: 'doughnut',
+        data: chartData,
+        options: {
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
+                    labels: {
+                        generateLabels: function () {
+                            return [     
+                                { text: 'Expense', fillStyle: 'darkred', strokeStyle: 'darkred' },
+                                { text: 'Income', fillStyle: 'darkgreen', strokeStyle: 'darkgreen' }
+                            ];
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function (name) {
+                            const value = name.raw;
+                            const total = income + expense;
+                            const percentage = ((value / total) * 100).toFixed(2);
+                            return `$${value.toFixed(2)} (${percentage}%)`;
+                        }
+                    }
+                }
+            },
+            animation: {
+                duration: 0
+            }
+        }
+    });
+
+
+    let currentState = 'initial';
+
+    function showBreakdown(isIncome) {
+        const breakdown = isIncome ? incomeBreakdown : expenseBreakdown;
+
+        if ((isIncome && currentState === 'incomeBreakdown') || (!isIncome && currentState === 'expenseBreakdown')) {
+            return;
+        }
+
+        const breakdownLabels = breakdown.map(({ name }) => name); 
+        const breakdownData = breakdown.map(({ amount }) => amount); 
+        const breakdownColors = isIncome
+            ? breakdownLabels.map(() => 'green') 
+            : breakdownLabels.map(() => 'firebrick');
+
+        /////////////////////////////////////
+
+        const hoveredLabel = isIncome ? 'Income' : 'Expense';
+        const hoveredColor = isIncome ? 'darkgreen' : 'darkred';
+
+        const otherLabel = isIncome ? 'Expense' : 'Income';
+        const otherData = isIncome ? expense : income;
+        const otherColor = isIncome ? 'darkred' : 'darkgreen';
+
+        /////////////////////////////////////
+
+        donutChart.data.labels = isIncome
+            ? [...breakdownLabels, otherLabel]
+            : [otherLabel, ...breakdownLabels];
+        donutChart.data.datasets[0].data = isIncome
+            ? [...breakdownData, otherData]
+            : [otherData, ...breakdownData];
+        donutChart.data.datasets[0].backgroundColor = isIncome
+            ? [...breakdownColors, otherColor]
+            : [otherColor, ...breakdownColors]; 
+
+        /////////////////////////////////////
+        currentState = isIncome ? 'incomeBreakdown' : 'expenseBreakdown';
+        donutChart.update();
+    }
+
+    document.getElementById('donutChart').addEventListener('mousemove', function (event) {
+        const points = donutChart.getElementsAtEventForMode(event, 'nearest', { intersect: true }, false);
+
+        if (points.length > 0) {
+            const index = points[0].index;
+            const label = chartData.labels[index];
+
+            if (label === 'Income') {
+                showBreakdown(true); 
+            } else if (label === 'Expense') {
+                showBreakdown(false); 
+            }
+        }
+    });
+
+    document.getElementById('donutChart').addEventListener('mouseleave', function () {
+         if (currentState === 'initial') return;
+
+        donutChart.data.labels = initialLabels;
+        donutChart.data.datasets[0].data = initialData;
+        donutChart.data.datasets[0].backgroundColor = initialColors;
+
+        currentState = 'initial';
+        donutChart.update();
+    });
+
+
+
+
+});
+
+
+</script>

@@ -1,0 +1,40 @@
+<div id="col"></div>
+<div id="regPage">  
+    <div id="regImage">
+        <img src="../images/cuteBee.png">
+    </div>
+
+    <div id="regSection">
+        <h1>Get Started</h1>
+
+        <form id="regForm" action="register" method="POST">
+            <div>
+                <div id="username">Email:</div>
+                <input class="box" type="text" name="email" value=""required>
+            </div>
+            <div>
+                <div id="username">Username:</div>
+                <input class="box" type="text" name="username" value="" minlength="7"required>
+            </div>
+            <div>
+                <div id="password">Password:</div>
+                <input class="box" type="password" name="password" value="" minlength="7"required>
+            </div>
+            <div>
+                <div id="password">Confirm Password:</div>
+                <input class="box" type="password" name="confirmPassword" value="" minlength="7"required>
+            </div>
+
+            <input id="logButton" type="submit" value="Register"required>
+        </form>
+        {{#if message}}
+            <div id="msg">{{message}}</div>
+        {{/if}}
+        <div id="noAccount">
+            <h5>Already have an account?</h5>
+            <a href="login">Log in</a>
+        </div>
+
+
+    </div>
+</div>

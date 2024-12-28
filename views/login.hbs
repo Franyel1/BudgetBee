@@ -1,0 +1,43 @@
+<div id="col"></div>
+<div id="loginPage">  
+    <div id="about">
+    <h1>About BudgetBee</h1>
+    <p>
+        BudgetBee is a personal finance tracking application designed to help users manage their income, expenses, and financial goals efficiently. 
+        With an intuitive interface and powerful features, BudgetBee enables users to categorize transactions, monitor spending habits, 
+        and visualize their financial health through interactive charts.
+    </p>
+    <p>
+        Whether you're saving for a major purchase, paying off debts, or simply looking to maintain better control over your finances, 
+        BudgetBee is your trusted companion. Start tracking today and take the first step toward achieving your financial goals!
+    </p>
+</div>
+
+    <div id="loginSection">
+        <h1>Login</h1>
+
+        <form id="loginForm" action="login" method="POST">
+            <div>
+                <div id="username">Username:</div>
+                <input class="box" type="text" name="username" value="" required>
+            </div>
+            <div>
+                <div id="password">Password:</div>
+                <input class="box" type="password" name="password" value="" required>
+                
+            </div>
+            
+            <input id="logButton" type="submit" value="Log in">
+        </form>
+        {{#if message}}
+            <div id="msg">{{message}}</div>
+        {{/if}}
+        <div id="noAccount">
+            <h5>Don't have an account?</h5>
+            <a href="register">Register Now!</a>
+        </div>
+
+
+    </div>
+</div>
+<div id="col"></div>
